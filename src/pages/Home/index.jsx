@@ -2,21 +2,23 @@ import { Container, TopBackground, Form, Title, ContainerInputs, InputLabel, Inp
 import MainImage from '../../assets/users.png'
 import { useRef } from 'react'
 import api from '../../services/api'
+import  Button  from '../../components/Button'
+
 
 function Home() {
   const inputName = useRef()
   const inputAge = useRef()
   const inputEmail = useRef()
 
-async function registerNewUsers(){
-  const data = await api.post('/usuarios',{
-    email: inputEmail.current.value,
-    age: parseInt(inputAge.current.value),
-    name: inputName.current.value
+  async function registerNewUsers() {
+    const data = await api.post('/usuarios', {
+      email: inputEmail.current.value,
+      age: parseInt(inputAge.current.value),
+      name: inputName.current.value
 
-  })
-  console.log(data)
-} 
+    })
+    console.log(data)
+  }
 
 
   return (
@@ -33,14 +35,14 @@ async function registerNewUsers(){
             <InputLabel>
               Nome<span> *</span>
             </InputLabel>
-            <Input type="text" placeholder="Nome do usuário" ref={inputName}/>
+            <Input type="text" placeholder="Nome do usuário" ref={inputName} />
           </div>
 
           <div>
             <InputLabel>
               Idade<span> *</span>
             </InputLabel>
-            <Input type="number" placeholder="Idade do usuário" ref={inputAge}/>
+            <Input type="number" placeholder="Idade do usuário" ref={inputAge} />
           </div>
 
         </ContainerInputs>
@@ -49,7 +51,7 @@ async function registerNewUsers(){
           <InputLabel>
             E-mail<span> *</span>
           </InputLabel>
-          <Input type="email" placeholder="Seu e-mail" ref={inputEmail}/>
+          <Input type="email" placeholder="Seu e-mail" ref={inputEmail} />
         </div>
 
         <Button type='button' onClick={registerNewUsers}>Cadastrar Usuário</Button>
